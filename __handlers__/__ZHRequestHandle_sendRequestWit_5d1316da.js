@@ -42,7 +42,7 @@
 
     result['orig_request_url'] = url.toString();
 
-    send({from:'/http', payload:JSON.stringify(result)});
+    send({from:'/request', payload:JSON.stringify(result)});
       var op = recv('input', function onMessage(value){
 
         log("[-] Forwarding from content: " + value.payload);

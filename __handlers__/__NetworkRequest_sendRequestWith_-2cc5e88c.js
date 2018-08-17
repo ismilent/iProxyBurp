@@ -49,7 +49,7 @@
 
     //console.log(JSON.stringify(result));
 
-    send({from:'/http', payload:JSON.stringify(result)});
+    send({from:'/request', payload:JSON.stringify(result)});
 
     var op = recv('input', function onMessage(value){
 

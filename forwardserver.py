@@ -7,7 +7,7 @@ ECHO_PORT = 27080
 
 class RequestHandler(BaseHTTPRequestHandler):
 
-    def do_FRIDA(self):
+    def do_REQUEST(self):
         request_path = self.path
         print('Recving request connction...')
         request_headers = self.headers
@@ -19,7 +19,7 @@ class RequestHandler(BaseHTTPRequestHandler):
 
         self.wfile.write(self.rfile.read(length))
 
-    def do_RESPF(self):
+    def do_RESPONSE(self):
         request_path = self.path
         print('Recving Response connction...')
         request_headers = self.headers

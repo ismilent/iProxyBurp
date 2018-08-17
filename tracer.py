@@ -25,7 +25,7 @@ def frida_process_message(self, message, data, ui):
 
             orig_request_url = orig_json_data.pop(u'orig_request_url')
 
-            req = requests.request('FRIDA', 'http://%s:%d/' % (BURP_HOST, BURP_PORT),
+            req = requests.request('REQUEST', 'http://%s:%d/' % (BURP_HOST, BURP_PORT),
                                    headers={'content-type':'text/plain', 'ORIG_REQUEST_URI': orig_request_url},
                                    data=json.dumps(orig_json_data))
             self._script.post({'type':'input', 'payload': req.content})
@@ -34,7 +34,7 @@ def frida_process_message(self, message, data, ui):
         elif stanza['from'] == '/response':
             req_data = stanza['payload'].encode('utf-8')
 
-            req = requests.request('RESPF', 'http://%s:%d/' % (BURP_HOST, BURP_PORT),
+            req = requests.request('RESPONSE', 'http://%s:%d/' % (BURP_HOST, BURP_PORT),
                                    headers={'content-type': 'text/plain'},
                                    data=json.dumps(req_data))
             self._script.post({'type': 'output', 'payload': req.content})
